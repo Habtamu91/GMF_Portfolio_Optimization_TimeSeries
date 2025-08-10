@@ -1,0 +1,13 @@
+pandas>=2.0
+numpy>=1.25
+yfinance>=0.2.28
+matplotlib>=3.7
+seaborn>=0.12
+scikit-learn>=1.2
+statsmodels>=0.14
+pmdarima>=2.2.3  # optional for auto_arima
+tensorflow>=2.12   # for LSTM (or use keras)
+pyportfolioopt>=1.5.4
+joblib
+tqdm
+pyyaml
