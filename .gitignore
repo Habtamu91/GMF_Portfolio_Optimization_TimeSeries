@@ -21,7 +21,6 @@ data/processed/
 # Logs and reports
 *.log
 *.tmp
-*.txt
 *.pdf
 
 # System files
