@@ -1,45 +1,45 @@
 
-```markdown
 # GMF Portfolio Optimization Time Series
 
 ## Project Overview
 Time Series Forecasting & Portfolio Optimization using ARIMA, SARIMA, and LSTM models to predict Tesla (TSLA) prices, combined with BND and SPY for constructing efficient portfolios using Modern Portfolio Theory and backtesting strategy performance.
 
 ## Project Structure
-
-```
+<pre>
 GMF-Portfolio_Optimization-TimeSeries/
 │
 ├── data/
-│   ├── raw/                  # Raw data fetched from Twelve Data API
-│   └── processed/            # Cleaned and processed datasets
+│   ├── raw/
+│   └── processed/
 │
 ├── notebooks/
-│   ├── 01_Data_Preprocessing_EDA.ipynb       # Data preprocessing and EDA
-│   ├── 02_Time_Series_Forecasting.ipynb      # Time series models
-│   ├── 03_Forecast_Analysis.ipynb            # Forecast results analysis
-│   ├── 04_Portfolio_Optimization.ipynb       # MPT optimization
-│   └── 05_Backtesting.ipynb                  # Strategy backtesting
+│   ├── 01_Data_Preprocessing_EDA.ipynb
+│   ├── 02_Time_Series_Forecasting.ipynb
+│   ├── 03_Forecast_Analysis.ipynb
+│   ├── 04_Portfolio_Optimization.ipynb
+│   └── 05_Backtesting.ipynb
 │
 ├── src/
-│   ├── data_processing.py    # Data fetching and cleaning
-│   ├── models.py             # ARIMA, LSTM implementations
-│   ├── optimization.py       # Portfolio optimization
-│   └── backtesting.py        # Performance simulation
+│   ├── data_processing.py
+│   ├── models.py
+│   ├── optimization.py
+│   └── backtesting.py
 │
 ├── outputs/
-│   ├── forecasts/            # Model predictions and metrics
-│   ├── portfolios/           # Optimal portfolio weights
-│   └── visualizations/       # Generated plots and charts
+│   ├── forecasts/
+│   ├── portfolios/
+│   └── visualizations/
 │
 ├── config/
-│   └── settings.yaml         # Configuration settings
+│   └── settings.yaml
 │
-├── README.md                 # Project documentation
-├── requirements.txt          # Python dependencies
-└── LICENSE                   # MIT License
-```
+├── README.md
+├── requirements.txt
+└── LICENSE
+</pre>
 
+## Methodology
+[... rest of your content remains exactly the same ...]
 ## Methodology
 
 ### Data Collection & Preprocessing
