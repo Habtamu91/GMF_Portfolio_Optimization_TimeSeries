@@ -1,13 +1,10 @@
+```markdown
+# GMF Portfolio Optimization Time Series
 
-
-### Project Structure
+## Project Structure
 
 The project is organized into a modular structure to facilitate data management, model development, and analysis. Below is an overview of the key directories and their contents:
 
-
-
-
-```markdown
 ```
 
 GMF-Portfolio\_Optimization-TimeSeries/
@@ -17,9 +14,9 @@ GMF-Portfolio\_Optimization-TimeSeries/
 ├── notebooks/
 │   ├── 01\_Data\_Preprocessing\_EDA.ipynb   # Data preprocessing and EDA
 │   ├── 02\_Time\_Series\_Forecasting.ipynb  # Development and evaluation of time series forecasting models
-│   ├── 03\_Forecast\_Analysis.ipynb         # Analysis and interpretation of forecast results
-│   ├── 04\_Portfolio\_Optimization.ipynb    # Portfolio optimization using MPT
-│   └── 05\_Backtesting.ipynb                # Backtesting of the optimized portfolio strategy
+│   ├── 03\_Forecast\_Analysis.ipynb        # Analysis and interpretation of forecast results
+│   ├── 04\_Portfolio\_Optimization.ipynb   # Portfolio optimization using MPT
+│   └── 05\_Backtesting.ipynb               # Backtesting of the optimized portfolio strategy
 ├── src/
 │   ├── data\_processing.py    # Scripts for data fetching, cleaning, and feature engineering
 │   ├── models.py             # Implementations of forecasting models (ARIMA, LSTM)
@@ -35,130 +32,127 @@ GMF-Portfolio\_Optimization-TimeSeries/
 ├── requirements.txt          # Python dependencies
 └── LICENSE                   # Project license information
 
-```
-```
+````
 
 ---
 
 ## Methodology
 
-This project follows a structured methodology encompassing data collection, preprocessing, exploratory data analysis, time series forecasting, portfolio optimization, and strategy backtesting. Each phase is designed to build upon the previous one, leading to a robust and data-driven portfolio management solution.
+This project follows a structured methodology encompassing data collection, preprocessing, exploratory data analysis, time series forecasting, portfolio optimization, and strategy backtesting. Each phase builds upon the previous one to create a robust, data-driven portfolio management solution.
 
-1. Data Collection & Preprocessing
+### Data Collection & Preprocessing
 
-Historical financial data for Tesla (TSLA), Vanguard Total Bond Market ETF (BND), and S&P 500 ETF (SPY) was collected from the Twelve Data API, covering the period from July 1, 2015, to July 31, 2025. The src/data_processing.py script handles the fetching and initial cleaning of this data. Key preprocessing steps included:
+Historical financial data for Tesla (TSLA), Vanguard Total Bond Market ETF (BND), and S&P 500 ETF (SPY) was collected from the Twelve Data API, covering July 1, 2015, to July 31, 2025. The `src/data_processing.py` script handles data fetching and initial cleaning.
 
-- Handling Missing Values: Forward-fill and backward-fill methods were applied to address any missing data points, ensuring a complete time series.
+Key preprocessing steps included:
 
+- **Handling Missing Values:** Forward-fill and backward-fill to ensure complete time series.
+- **Data Type Conversion:** Converting price and volume data to numeric formats.
+- **Feature Engineering:** Calculating daily returns and rolling volatility for each asset.
 
-- Data Type Conversion: Ensuring all columns, especially price and volume data, were converted to appropriate numeric formats.
+### Exploratory Data Analysis (EDA)
 
-- Feature Engineering: Calculation of daily returns and rolling volatility for each asset, which are crucial for subsequent analysis and model training.
+Performed to gain insights into the financial data:
 
-2. Exploratory Data Analysis (EDA)
+- **Visualization of Trends:** Historical closing prices plotted for each asset.
+- **Volatility Analysis:** Daily percentage changes, rolling means, and standard deviations analyzed.
+- **Stationarity Testing:** Augmented Dickey-Fuller (ADF) tests on prices and returns.
+- **Risk Metrics:** Value at Risk (VaR) and Sharpe Ratio calculated.
 
-EDA was performed to gain insights into the characteristics of the financial data. This involved:
+### Time Series Forecasting Models
 
-- Visualization of Trends: Plotting historical closing prices to identify long-term trends and patterns for each asset.
+Two types of forecasting models were developed and compared:
 
-- Volatility Analysis: Calculating and visualizing daily percentage changes, rolling means, and standard deviations to understand short-term fluctuations and overall volatility.
+- **Classical Statistical Model:** ARIMA/SARIMA using `statsmodels` and `pmdarima` with parameter tuning.
+- **Deep Learning Model:** LSTM neural network with tuning of architecture and hyperparameters.
 
-- Stationarity Testing: Performing statistical tests, such as the Augmented Dickey-Fuller (ADF) test, on closing prices and daily returns to assess stationarity, a prerequisite for ARIMA models. Discussions on the implications of stationarity for time series modeling were conducted.
+The dataset was split chronologically into training (2015-2023) and testing (2024-2025) sets. Models were evaluated with MAE, RMSE, and MAPE metrics.
 
-- Risk Metrics: Calculating foundational risk metrics like Value at Risk (VaR) and the Sharpe Ratio to assess potential losses and historical risk-adjusted returns.
+### Forecast Analysis
 
-3. Time Series Forecasting Models
+Using the best model, Tesla’s stock prices were forecasted 6-12 months ahead with confidence intervals.
 
-To predict Tesla's future stock prices, at least two different types of forecasting models were implemented and compared:
+Focus areas included:
 
-- Classical Statistical Model (ARIMA/SARIMA): AutoRegressive Integrated Moving Average (ARIMA) or Seasonal ARIMA (SARIMA) models were built using libraries like statsmodels and pmdarima. Techniques like grid search or auto_arima were used to optimize model parameters (p, d, q).
+- Trend identification (upward, downward, stable).
+- Volatility and risk from confidence intervals.
+- Market opportunities and risks based on forecasts.
 
-- Deep Learning Model (LSTM): A Long Short-Term Memory (LSTM) neural network was constructed, trained, and evaluated for time series forecasting. Experimentation with architecture (layers, neurons) and hyperparameters (epochs, batch size) was performed.
+### Portfolio Optimization
 
-- The dataset was chronologically split into training (2015-2023) and testing (2024-2025) sets to preserve temporal order, which is crucial for time series data. Model performance was compared using metrics such as Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and Mean Absolute Percentage Error (MAPE).
+Using the forecast and historical data for BND and SPY, an optimized portfolio was constructed based on Modern Portfolio Theory (MPT):
 
-4. Forecast Analysis
+- **Expected Returns:** Forecasted returns for TSLA, historical for BND and SPY.
+- **Covariance Matrix:** Calculated from historical returns.
+- **Efficient Frontier:** Generated and plotted.
+- **Key Portfolios:** Maximum Sharpe Ratio and Minimum Volatility portfolios identified.
+- **Recommendation:** Optimal portfolio weights and expected metrics provided.
 
-Using the best-performing model from Task 2, future stock prices for Tesla were forecasted for a period of 6-12 months. The forecast included confidence intervals to indicate the range within which future prices are expected to lie. Analysis focused on:
+### Strategy Backtesting
 
-- Trend Analysis: Identifying long-term trends (upward, downward, stable) and any significant patterns or anomalies.
+Backtesting was performed from August 1, 2024, to July 31, 2025, comparing the strategy against a benchmark (60% SPY / 40% BND):
 
-- Volatility and Risk: Discussing the uncertainty captured by confidence intervals and their implications for long-term forecast reliability.
+- Cumulative returns plotted.
+- Performance metrics including Sharpe Ratio and total returns calculated.
+- Assessment of strategy’s outperformance.
 
-- Market Opportunities and Risks: Outlining potential market opportunities (e.g., expected price increases) and risks (e.g., high volatility or expected declines) based on the forecast.
+---
 
-5. Portfolio Optimization
+## How to Run the Project
 
-Insights from the TSLA forecast were integrated with historical data for BND and SPY to construct an optimized portfolio based on Modern Portfolio Theory (MPT). Key steps included:
+1. **Clone the repository:**
 
-- Expected Returns: Using the forecasted return for TSLA and historical average daily returns (annualized) for BND and SPY as proxies for their expected returns.
+   ```bash
+   git clone https://github.com/Habtamu91/GMF_Portfolio_Optimization_TimeSeries.git
+   cd GMF_Portfolio_Optimization_TimeSeries
+````
 
-- Covariance Matrix: Computing the covariance matrix based on the historical daily returns of all three assets to understand their co-movement and calculate portfolio risk.
+2. **Install dependencies:**
 
-- Efficient Frontier: Running an optimization simulation to generate the Efficient Frontier, representing optimal portfolios that offer the highest expected return for a defined level of risk. The Efficient Frontier was plotted with portfolio volatility on the x-axis and return on the y-axis.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-- Key Portfolios: Identifying and marking the Maximum Sharpe Ratio Portfolio (Tangency Portfolio) and the Minimum Volatility Portfolio on the Efficient Frontier.
+3. **Run Notebooks:**
 
-- Optimal Portfolio Recommendation: Selecting and justifying an optimal portfolio based on the analysis of the Efficient Frontier, considering priorities such as maximizing risk-adjusted return or minimizing risk. The final recommendation included optimal weights for TSLA, BND, and SPY, along with the portfolio's expected annual return, volatility, and Sharpe Ratio.
+   Open and execute notebooks in the `notebooks/` directory in order.
 
-6. Strategy Backtesting
+4. **View Outputs:**
 
-To validate the proposed strategy, a backtesting period was defined (e.g., August 1, 2024 - July 31, 2025). The strategy's performance was simulated and compared against a simple benchmark portfolio (e.g., a static 60% SPY / 40% BND portfolio). Performance analysis involved:
+   Check results and plots in the `outputs/` folder.
 
-- Cumulative Returns Plot: Visualizing the cumulative returns of the strategy portfolio against the benchmark over the backtesting period.
+---
 
-- Performance Metrics: Calculating the final Sharpe Ratio and total return for both the strategy and the benchmark.
+## Technologies Used
 
-- Outperformance Assessment: Concluding whether the strategy outperformed the benchmark and discussing the implications of the initial backtest for the viability of the model-driven approach.
+* **Python** — Primary language
+* **pandas, numpy** — Data manipulation and numerical operations
+* **yfinance** — Fetching financial data
+* **matplotlib, seaborn** — Visualization
+* **scikit-learn** — Machine learning utilities
+* **statsmodels, pmdarima** — Statistical modeling (ARIMA)
+* **tensorflow (keras)** — LSTM modeling
+* **PyPortfolioOpt** — Portfolio optimization (MPT)
+* **joblib** — Object serialization
+* **tqdm** — Progress bars
+* **pyyaml** — Configuration file handling
 
-How to Run the Project
+---
 
-To set up and run this project locally, follow these steps:
+## License
 
-1.Clone the repository:
+This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
 
-2.Install dependencies:
+---
 
-3.Run Notebooks:
+## Author
 
-4.View Outputs:
-
-Technologies Used
-
-This project utilizes a range of powerful libraries and tools for data science, machine learning, and financial analysis:
-
-- Python: The primary programming language.
-
-- pandas: For data manipulation and analysis.
-
-- numpy: For numerical operations.
-
-- yfinance: For fetching historical financial data.
-
-- matplotlib & seaborn: For data visualization.
-
-- scikit-learn: For various machine learning utilities.
-
-- statsmodels: For statistical modeling, including ARIMA/SARIMA.
-
-- pmdarima: (Optional) For auto_arima functionality to automatically determine ARIMA parameters.
-
-- tensorflow (or keras): For building and training LSTM models.
-
-- PyPortfolioOpt: For Modern Portfolio Theory (MPT) and portfolio optimization.
-
-- joblib: For efficient saving and loading of Python objects.
-
-- tqdm: For displaying progress bars.
-
-- pyyaml: For reading configuration files.
-
-License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Author
-
-Habtamu Belay
+**Habtamu Belay**
 3rd-Year Data Science Student, Bahir Dar University
 
+```
+
+---
+
+If you want, I can also help you create the actual `README.md` file with this content ready to save. Just ask!
+```
