@@ -1,3 +1,4 @@
+Got it! Here’s a **full README.md** file with your entire content and the **folder structure exactly as you want it** — properly fenced, indented, and ready to render cleanly on GitHub:
 
 ```markdown
 # GMF Portfolio Optimization Time Series
@@ -8,30 +9,30 @@ The project is organized into a modular structure to facilitate data management,
 
 ```
 
-GMF-Portfolio\_Optimization-TimeSeries/
+GMF-Portfolio_Optimization-TimeSeries/
 ├── data/
-│   ├── raw/               # Raw data fetched from Twelve Data API
-│   └── processed/         # Cleaned and processed datasets used for modeling
+│   ├── raw/                 # Raw data fetched from Twelve Data API
+│   └── processed/           # Cleaned and processed datasets used for modeling
 ├── notebooks/
-│   ├── 01\_Data\_Preprocessing\_EDA.ipynb   # Data preprocessing and exploratory data analysis
-│   ├── 02\_Time\_Series\_Forecasting.ipynb  # Development and evaluation of time series forecasting models
-│   ├── 03\_Forecast\_Analysis.ipynb        # Analysis and interpretation of forecast results
-│   ├── 04\_Portfolio\_Optimization.ipynb   # Portfolio optimization using Modern Portfolio Theory (MPT)
-│   └── 05\_Backtesting.ipynb               # Backtesting of the optimized portfolio strategy
+│   ├── 01_Data_Preprocessing_EDA.ipynb   # Data preprocessing and EDA
+│   ├── 02_Time_Series_Forecasting.ipynb  # Time series forecasting models
+│   ├── 03_Forecast_Analysis.ipynb        # Forecast analysis
+│   ├── 04_Portfolio_Optimization.ipynb   # Portfolio optimization
+│   └── 05_Backtesting.ipynb               # Backtesting strategy
 ├── src/
-│   ├── data\_processing.py    # Scripts for data fetching, cleaning, and feature engineering
-│   ├── models.py             # Implementations of forecasting models (ARIMA, LSTM)
-│   ├── optimization.py       # Scripts for portfolio optimization calculations
-│   └── backtesting.py        # Scripts for simulating and evaluating portfolio performance
+│   ├── data_processing.py    # Data fetching, cleaning scripts
+│   ├── models.py             # Forecasting models (ARIMA, LSTM)
+│   ├── optimization.py       # Portfolio optimization scripts
+│   └── backtesting.py        # Backtesting scripts
 ├── outputs/
-│   ├── forecasts/            # Saved model predictions and performance metrics
-│   ├── portfolios/           # Optimal portfolio weights and related metrics
-│   └── visualizations/       # Generated plots and charts from analysis
+│   ├── forecasts/            # Model predictions and metrics
+│   ├── portfolios/           # Portfolio weights and analysis
+│   └── visualizations/       # Plots and charts
 ├── config/
-│   └── settings.yaml         # Configuration settings for the project
-├── README.md                 # Project README file
+│   └── settings.yaml         # Config settings
+├── README.md                 # Project README
 ├── requirements.txt          # Python dependencies
-└── LICENSE                   # Project license information
+└── LICENSE                   # License information
 
 ````
 
@@ -47,25 +48,25 @@ Historical financial data for Tesla (TSLA), Vanguard Total Bond Market ETF (BND)
 
 Key preprocessing steps included:
 
-- **Handling Missing Values:** Forward-fill and backward-fill to ensure a complete time series.
-- **Data Type Conversion:** Converting price and volume data to appropriate numeric formats.
-- **Feature Engineering:** Calculating daily returns and rolling volatility for each asset.
+- **Handling Missing Values:** Forward-fill and backward-fill to ensure a complete time series.  
+- **Data Type Conversion:** Converting price and volume data to appropriate numeric formats.  
+- **Feature Engineering:** Calculating daily returns and rolling volatility for each asset.  
 
 ### Exploratory Data Analysis (EDA)
 
 Performed to gain insights into the financial data:
 
-- **Visualization of Trends:** Historical closing prices plotted for each asset.
-- **Volatility Analysis:** Daily percentage changes, rolling means, and standard deviations analyzed.
-- **Stationarity Testing:** Augmented Dickey-Fuller (ADF) tests on prices and returns.
-- **Risk Metrics:** Value at Risk (VaR) and Sharpe Ratio calculated.
+- **Visualization of Trends:** Historical closing prices plotted for each asset.  
+- **Volatility Analysis:** Daily percentage changes, rolling means, and standard deviations analyzed.  
+- **Stationarity Testing:** Augmented Dickey-Fuller (ADF) tests on prices and returns.  
+- **Risk Metrics:** Value at Risk (VaR) and Sharpe Ratio calculated.  
 
 ### Time Series Forecasting Models
 
 Two types of forecasting models were developed and compared:
 
-- **Classical Statistical Model:** ARIMA/SARIMA using `statsmodels` and `pmdarima` with parameter tuning.
-- **Deep Learning Model:** LSTM neural network with tuning of architecture and hyperparameters.
+- **Classical Statistical Model:** ARIMA/SARIMA using `statsmodels` and `pmdarima` with parameter tuning.  
+- **Deep Learning Model:** LSTM neural network with tuning of architecture and hyperparameters.  
 
 The dataset was split chronologically into training (2015-2023) and testing (2024-2025) sets. Models were evaluated with MAE, RMSE, and MAPE metrics.
 
@@ -75,27 +76,27 @@ Using the best model, Tesla’s stock prices were forecasted 6-12 months ahead w
 
 Focus areas included:
 
-- Trend identification (upward, downward, stable).
-- Volatility and risk from confidence intervals.
-- Market opportunities and risks based on forecasts.
+- Trend identification (upward, downward, stable).  
+- Volatility and risk from confidence intervals.  
+- Market opportunities and risks based on forecasts.  
 
 ### Portfolio Optimization
 
 Using the forecast and historical data for BND and SPY, an optimized portfolio was constructed based on Modern Portfolio Theory (MPT):
 
-- **Expected Returns:** Forecasted returns for TSLA, historical for BND and SPY.
-- **Covariance Matrix:** Calculated from historical returns.
-- **Efficient Frontier:** Generated and plotted.
-- **Key Portfolios:** Maximum Sharpe Ratio and Minimum Volatility portfolios identified.
-- **Recommendation:** Optimal portfolio weights and expected metrics provided.
+- **Expected Returns:** Forecasted returns for TSLA, historical for BND and SPY.  
+- **Covariance Matrix:** Calculated from historical returns.  
+- **Efficient Frontier:** Generated and plotted.  
+- **Key Portfolios:** Maximum Sharpe Ratio and Minimum Volatility portfolios identified.  
+- **Recommendation:** Optimal portfolio weights and expected metrics provided.  
 
 ### Strategy Backtesting
 
 Backtesting was performed from August 1, 2024, to July 31, 2025, comparing the strategy against a benchmark (60% SPY / 40% BND):
 
-- Cumulative returns plotted.
-- Performance metrics including Sharpe Ratio and total returns calculated.
-- Assessment of strategy’s outperformance.
+- Cumulative returns plotted.  
+- Performance metrics including Sharpe Ratio and total returns calculated.  
+- Assessment of strategy’s outperformance.  
 
 ---
 
@@ -103,8 +104,8 @@ Backtesting was performed from August 1, 2024, to July 31, 2025, comparing the s
 
 ### Prerequisites
 
-- Python 3.8 or higher
-- pip package manager
+- Python 3.8 or higher  
+- pip package manager  
 
 ### Installation
 
@@ -158,4 +159,5 @@ Bahir Dar University
 
 ```
 
+---
 
