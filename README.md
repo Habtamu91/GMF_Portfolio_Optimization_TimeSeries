@@ -1,4 +1,3 @@
-Got it! Here’s a **full README.md** file with your entire content and the **folder structure exactly as you want it** — properly fenced, indented, and ready to render cleanly on GitHub:
 
 ```markdown
 # GMF Portfolio Optimization Time Series
@@ -9,30 +8,30 @@ The project is organized into a modular structure to facilitate data management,
 
 ```
 
-GMF-Portfolio_Optimization-TimeSeries/
+GMF-Portfolio\_Optimization-TimeSeries/
 ├── data/
-│   ├── raw/                 # Raw data fetched from Twelve Data API
-│   └── processed/           # Cleaned and processed datasets used for modeling
+│   ├── raw/
+│   └── processed/
 ├── notebooks/
-│   ├── 01_Data_Preprocessing_EDA.ipynb   # Data preprocessing and EDA
-│   ├── 02_Time_Series_Forecasting.ipynb  # Time series forecasting models
-│   ├── 03_Forecast_Analysis.ipynb        # Forecast analysis
-│   ├── 04_Portfolio_Optimization.ipynb   # Portfolio optimization
-│   └── 05_Backtesting.ipynb               # Backtesting strategy
+│   ├── 01\_Data\_Preprocessing\_EDA.ipynb
+│   ├── 02\_Time\_Series\_Forecasting.ipynb
+│   ├── 03\_Forecast\_Analysis.ipynb
+│   ├── 04\_Portfolio\_Optimization.ipynb
+│   └── 05\_Backtesting.ipynb
 ├── src/
-│   ├── data_processing.py    # Data fetching, cleaning scripts
-│   ├── models.py             # Forecasting models (ARIMA, LSTM)
-│   ├── optimization.py       # Portfolio optimization scripts
-│   └── backtesting.py        # Backtesting scripts
+│   ├── data\_processing.py
+│   ├── models.py
+│   ├── optimization.py
+│   └── backtesting.py
 ├── outputs/
-│   ├── forecasts/            # Model predictions and metrics
-│   ├── portfolios/           # Portfolio weights and analysis
-│   └── visualizations/       # Plots and charts
+│   ├── forecasts/
+│   ├── portfolios/
+│   └── visualizations/
 ├── config/
-│   └── settings.yaml         # Config settings
-├── README.md                 # Project README
-├── requirements.txt          # Python dependencies
-└── LICENSE                   # License information
+│   └── settings.yaml
+├── README.md
+├── requirements.txt
+└── LICENSE
 
 ````
 
@@ -158,6 +157,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 Bahir Dar University
 
 ```
-
----
 
