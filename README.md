@@ -1,42 +1,46 @@
-Project Structure
+
+
+### Project Structure
 
 The project is organized into a modular structure to facilitate data management, model development, and analysis. Below is an overview of the key directories and their contents:
 
 
 
-GMF-Portfolio_Optimization-TimeSeries/
-│
+
+```markdown
+```
+
+GMF-Portfolio\_Optimization-TimeSeries/
 ├── data/
 │   ├── raw/               # Raw data fetched from Twelve Data API
 │   └── processed/         # Cleaned and processed datasets used for modeling
-│
 ├── notebooks/
-│   ├── 01_Data_Preprocessing_EDA.ipynb   # Data preprocessing and Exploratory Data Analysis
-│   ├── 02_Time_Series_Forecasting.ipynb  # Development and evaluation of time series forecasting models
-│   ├── 03_Forecast_Analysis.ipynb        # Analysis and interpretation of forecast results
-│   ├── 04_Portfolio_Optimization.ipynb   # Portfolio optimization using MPT
-│   └── 05_Backtesting.ipynb              # Backtesting of the optimized portfolio strategy
-│
+│   ├── 01\_Data\_Preprocessing\_EDA.ipynb   # Data preprocessing and EDA
+│   ├── 02\_Time\_Series\_Forecasting.ipynb  # Development and evaluation of time series forecasting models
+│   ├── 03\_Forecast\_Analysis.ipynb         # Analysis and interpretation of forecast results
+│   ├── 04\_Portfolio\_Optimization.ipynb    # Portfolio optimization using MPT
+│   └── 05\_Backtesting.ipynb                # Backtesting of the optimized portfolio strategy
 ├── src/
-│   ├── data_processing.py  # Scripts for data fetching, cleaning, and feature engineering
-│   ├── models.py           # Implementations of forecasting models (ARIMA, LSTM)
-│   ├── optimization.py     # Scripts for portfolio optimization calculations
-│   └── backtesting.py      # Scripts for simulating and evaluating portfolio performance
-│
+│   ├── data\_processing.py    # Scripts for data fetching, cleaning, and feature engineering
+│   ├── models.py             # Implementations of forecasting models (ARIMA, LSTM)
+│   ├── optimization.py       # Scripts for portfolio optimization calculations
+│   └── backtesting.py        # Scripts for simulating and evaluating portfolio performance
 ├── outputs/
-│   ├── forecasts/         # Saved model predictions and performance metrics
-│   ├── portfolios/        # Optimal portfolio weights and related metrics
-│   └── visualizations/    # Generated plots and charts from analysis
-│
+│   ├── forecasts/            # Saved model predictions and performance metrics
+│   ├── portfolios/           # Optimal portfolio weights and related metrics
+│   └── visualizations/       # Generated plots and charts from analysis
 ├── config/
-│   └── settings.yaml      # Configuration settings for the project
-│
-├── README.md              # Project README file
-├── requirements.txt       # Python dependencies
-└── LICENSE                # Project license information
+│   └── settings.yaml         # Configuration settings for the project
+├── README.md                 # Project README file
+├── requirements.txt          # Python dependencies
+└── LICENSE                   # Project license information
 
+```
+```
 
-Methodology
+---
+
+## Methodology
 
 This project follows a structured methodology encompassing data collection, preprocessing, exploratory data analysis, time series forecasting, portfolio optimization, and strategy backtesting. Each phase is designed to build upon the previous one, leading to a robust and data-driven portfolio management solution.
 
