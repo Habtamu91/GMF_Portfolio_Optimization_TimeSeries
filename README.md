@@ -1,3 +1,4 @@
+
 ```markdown
 # GMF Portfolio Optimization Time Series
 
@@ -12,10 +13,10 @@ GMF-Portfolio\_Optimization-TimeSeries/
 │   ├── raw/               # Raw data fetched from Twelve Data API
 │   └── processed/         # Cleaned and processed datasets used for modeling
 ├── notebooks/
-│   ├── 01\_Data\_Preprocessing\_EDA.ipynb   # Data preprocessing and EDA
+│   ├── 01\_Data\_Preprocessing\_EDA.ipynb   # Data preprocessing and exploratory data analysis
 │   ├── 02\_Time\_Series\_Forecasting.ipynb  # Development and evaluation of time series forecasting models
 │   ├── 03\_Forecast\_Analysis.ipynb        # Analysis and interpretation of forecast results
-│   ├── 04\_Portfolio\_Optimization.ipynb   # Portfolio optimization using MPT
+│   ├── 04\_Portfolio\_Optimization.ipynb   # Portfolio optimization using Modern Portfolio Theory (MPT)
 │   └── 05\_Backtesting.ipynb               # Backtesting of the optimized portfolio strategy
 ├── src/
 │   ├── data\_processing.py    # Scripts for data fetching, cleaning, and feature engineering
@@ -38,7 +39,7 @@ GMF-Portfolio\_Optimization-TimeSeries/
 
 ## Methodology
 
-This project follows a structured methodology encompassing data collection, preprocessing, exploratory data analysis, time series forecasting, portfolio optimization, and strategy backtesting. Each phase builds upon the previous one to create a robust, data-driven portfolio management solution.
+This project follows a structured methodology encompassing data collection, preprocessing, exploratory data analysis, time series forecasting, portfolio optimization, and strategy backtesting. Each phase builds upon the previous to create a robust, data-driven portfolio management solution.
 
 ### Data Collection & Preprocessing
 
@@ -46,8 +47,8 @@ Historical financial data for Tesla (TSLA), Vanguard Total Bond Market ETF (BND)
 
 Key preprocessing steps included:
 
-- **Handling Missing Values:** Forward-fill and backward-fill to ensure complete time series.
-- **Data Type Conversion:** Converting price and volume data to numeric formats.
+- **Handling Missing Values:** Forward-fill and backward-fill to ensure a complete time series.
+- **Data Type Conversion:** Converting price and volume data to appropriate numeric formats.
 - **Feature Engineering:** Calculating daily returns and rolling volatility for each asset.
 
 ### Exploratory Data Analysis (EDA)
@@ -100,59 +101,61 @@ Backtesting was performed from August 1, 2024, to July 31, 2025, comparing the s
 
 ## How to Run the Project
 
-1. **Clone the repository:**
+### Prerequisites
 
-   ```bash
-   git clone https://github.com/Habtamu91/GMF_Portfolio_Optimization_TimeSeries.git
-   cd GMF_Portfolio_Optimization_TimeSeries
+- Python 3.8 or higher
+- pip package manager
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/Habtamu91/GMF_Portfolio_Optimization_TimeSeries.git
+cd GMF_Portfolio_Optimization_TimeSeries
 ````
 
-2. **Install dependencies:**
+2. Install dependencies:
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+```bash
+pip install -r requirements.txt
+```
 
-3. **Run Notebooks:**
+### Usage
 
-   Open and execute notebooks in the `notebooks/` directory in order.
-
-4. **View Outputs:**
-
-   Check results and plots in the `outputs/` folder.
+* Run the Jupyter notebooks in the `notebooks/` directory sequentially.
+* Alternatively, execute the individual scripts in `src/` for specific tasks.
 
 ---
 
 ## Technologies Used
 
-* **Python** — Primary language
-* **pandas, numpy** — Data manipulation and numerical operations
-* **yfinance** — Fetching financial data
-* **matplotlib, seaborn** — Visualization
-* **scikit-learn** — Machine learning utilities
-* **statsmodels, pmdarima** — Statistical modeling (ARIMA)
-* **tensorflow (keras)** — LSTM modeling
-* **PyPortfolioOpt** — Portfolio optimization (MPT)
-* **joblib** — Object serialization
-* **tqdm** — Progress bars
-* **pyyaml** — Configuration file handling
+* Python
+* pandas, numpy
+* yfinance
+* matplotlib, seaborn
+* scikit-learn
+* statsmodels, pmdarima
+* tensorflow / keras
+* PyPortfolioOpt
+* joblib
+* tqdm
+* pyyaml
 
 ---
 
 ## License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 
 ## Author
 
 **Habtamu Belay**
-3rd-Year Data Science Student, Bahir Dar University
+3rd-Year Data Science Student
+Bahir Dar University
 
 ```
 
----
 
-If you want, I can also help you create the actual `README.md` file with this content ready to save. Just ask!
-```
