@@ -1,181 +1,118 @@
-Absolutely! Let’s do this right.
-
-I’ll provide you a **full README.md** with a **clear, neat ASCII folder structure** that renders perfectly on GitHub, plus all your content well formatted.
-
----
-
-### Here is the full README.md — just copy-paste exactly as it is:
 
 ```markdown
 # GMF Portfolio Optimization Time Series
 
+## Project Overview
+Time Series Forecasting & Portfolio Optimization using ARIMA, SARIMA, and LSTM models to predict Tesla (TSLA) prices, combined with BND and SPY for constructing efficient portfolios using Modern Portfolio Theory and backtesting strategy performance.
+
 ## Project Structure
 
-The project is organized into a modular structure to facilitate data management, model development, and analysis. Below is an overview of the key directories and their contents:
-
 ```
-
-GMF-Portfolio\_Optimization-TimeSeries/
+GMF-Portfolio_Optimization-TimeSeries/
+│
 ├── data/
-│   ├── raw/
-│   └── processed/
+│   ├── raw/                  # Raw data fetched from Twelve Data API
+│   └── processed/            # Cleaned and processed datasets
+│
 ├── notebooks/
-│   ├── 01\_Data\_Preprocessing\_EDA.ipynb
-│   ├── 02\_Time\_Series\_Forecasting.ipynb
-│   ├── 03\_Forecast\_Analysis.ipynb
-│   ├── 04\_Portfolio\_Optimization.ipynb
-│   └── 05\_Backtesting.ipynb
+│   ├── 01_Data_Preprocessing_EDA.ipynb       # Data preprocessing and EDA
+│   ├── 02_Time_Series_Forecasting.ipynb      # Time series models
+│   ├── 03_Forecast_Analysis.ipynb            # Forecast results analysis
+│   ├── 04_Portfolio_Optimization.ipynb       # MPT optimization
+│   └── 05_Backtesting.ipynb                  # Strategy backtesting
+│
 ├── src/
-│   ├── data\_processing.py
-│   ├── models.py
-│   ├── optimization.py
-│   └── backtesting.py
+│   ├── data_processing.py    # Data fetching and cleaning
+│   ├── models.py             # ARIMA, LSTM implementations
+│   ├── optimization.py       # Portfolio optimization
+│   └── backtesting.py        # Performance simulation
+│
 ├── outputs/
-│   ├── forecasts/
-│   ├── portfolios/
-│   └── visualizations/
+│   ├── forecasts/            # Model predictions and metrics
+│   ├── portfolios/           # Optimal portfolio weights
+│   └── visualizations/       # Generated plots and charts
+│
 ├── config/
-│   └── settings.yaml
-├── README.md
-├── requirements.txt
-└── LICENSE
-
-````
-
----
+│   └── settings.yaml         # Configuration settings
+│
+├── README.md                 # Project documentation
+├── requirements.txt          # Python dependencies
+└── LICENSE                   # MIT License
+```
 
 ## Methodology
 
-This project follows a structured methodology encompassing data collection, preprocessing, exploratory data analysis, time series forecasting, portfolio optimization, and strategy backtesting. Each phase builds upon the previous to create a robust, data-driven portfolio management solution.
-
 ### Data Collection & Preprocessing
+- Collected historical data for TSLA, BND, SPY (2015-2025) from Twelve Data API
+- Preprocessing steps:
+  - Missing value handling (forward/backward fill)
+  - Data type conversion
+  - Feature engineering (daily returns, rolling volatility)
 
-Historical financial data for Tesla (TSLA), Vanguard Total Bond Market ETF (BND), and S&P 500 ETF (SPY) was collected from the Twelve Data API, covering July 1, 2015, to July 31, 2025. The `src/data_processing.py` script handles data fetching and initial cleaning.
+### Exploratory Data Analysis
+- Visualized historical trends and volatility
+- Conducted stationarity testing (ADF tests)
+- Calculated risk metrics (VaR, Sharpe Ratio)
 
-Key preprocessing steps included:
-
-- **Handling Missing Values:** Forward-fill and backward-fill to ensure a complete time series.  
-- **Data Type Conversion:** Converting price and volume data to appropriate numeric formats.  
-- **Feature Engineering:** Calculating daily returns and rolling volatility for each asset.  
-
-### Exploratory Data Analysis (EDA)
-
-Performed to gain insights into the financial data:
-
-- **Visualization of Trends:** Historical closing prices plotted for each asset.  
-- **Volatility Analysis:** Daily percentage changes, rolling means, and standard deviations analyzed.  
-- **Stationarity Testing:** Augmented Dickey-Fuller (ADF) tests on prices and returns.  
-- **Risk Metrics:** Value at Risk (VaR) and Sharpe Ratio calculated.  
-
-### Time Series Forecasting Models
-
-Two types of forecasting models were developed and compared:
-
-- **Classical Statistical Model:** ARIMA/SARIMA using `statsmodels` and `pmdarima` with parameter tuning.  
-- **Deep Learning Model:** LSTM neural network with tuning of architecture and hyperparameters.  
-
-The dataset was split chronologically into training (2015-2023) and testing (2024-2025) sets. Models were evaluated with MAE, RMSE, and MAPE metrics.
-
-### Forecast Analysis
-
-Using the best model, Tesla’s stock prices were forecasted 6-12 months ahead with confidence intervals.
-
-Focus areas included:
-
-- Trend identification (upward, downward, stable).  
-- Volatility and risk from confidence intervals.  
-- Market opportunities and risks based on forecasts.  
+### Time Series Forecasting
+- Developed and compared:
+  - ARIMA/SARIMA models
+  - LSTM neural networks
+- Evaluation metrics: MAE, RMSE, MAPE
+- Training period: 2015-2023
+- Testing period: 2024-2025
 
 ### Portfolio Optimization
+- Modern Portfolio Theory implementation:
+  - Calculated expected returns and covariance matrix
+  - Generated efficient frontier
+  - Identified optimal portfolios:
+    - Maximum Sharpe Ratio
+    - Minimum Volatility
 
-Using the forecast and historical data for BND and SPY, an optimized portfolio was constructed based on Modern Portfolio Theory (MPT):
-
-- **Expected Returns:** Forecasted returns for TSLA, historical for BND and SPY.  
-- **Covariance Matrix:** Calculated from historical returns.  
-- **Efficient Frontier:** Generated and plotted.  
-- **Key Portfolios:** Maximum Sharpe Ratio and Minimum Volatility portfolios identified.  
-- **Recommendation:** Optimal portfolio weights and expected metrics provided.  
-
-### Strategy Backtesting
-
-Backtesting was performed from August 1, 2024, to July 31, 2025, comparing the strategy against a benchmark (60% SPY / 40% BND):
-
-- Cumulative returns plotted.  
-- Performance metrics including Sharpe Ratio and total returns calculated.  
-- Assessment of strategy’s outperformance.  
-
----
+### Backtesting
+- Test period: August 2024 - July 2025
+- Compared against 60% SPY / 40% BND benchmark
+- Evaluated performance metrics:
+  - Cumulative returns
+  - Sharpe Ratio
+  - Total returns
 
 ## How to Run the Project
 
 ### Prerequisites
-
-- Python 3.8 or higher  
-- pip package manager  
+- Python 3.8+
+- pip package manager
 
 ### Installation
-
-1. Clone the repository:
-
 ```bash
 git clone https://github.com/Habtamu91/GMF_Portfolio_Optimization_TimeSeries.git
 cd GMF_Portfolio_Optimization_TimeSeries
-````
-
-2. Install dependencies:
-
-```bash
 pip install -r requirements.txt
 ```
 
 ### Usage
-
-* Run the Jupyter notebooks in the `notebooks/` directory sequentially.
-* Alternatively, execute the individual scripts in `src/` for specific tasks.
-
----
+1. Run notebooks in sequential order:
+   - `01_Data_Preprocessing_EDA.ipynb`
+   - `02_Time_Series_Forecasting.ipynb`
+   - `03_Forecast_Analysis.ipynb`
+   - `04_Portfolio_Optimization.ipynb`
+   - `05_Backtesting.ipynb`
 
 ## Technologies Used
-
-* Python
-* pandas, numpy
-* yfinance
-* matplotlib, seaborn
-* scikit-learn
-* statsmodels, pmdarima
-* tensorflow / keras
-* PyPortfolioOpt
-* joblib
-* tqdm
-* pyyaml
-
----
+- **Python Libraries**:
+  - pandas, numpy
+  - matplotlib, seaborn
+  - statsmodels, pmdarima
+  - tensorflow/keras
+  - PyPortfolioOpt
 
 ## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Author
-
-**Habtamu Belay**
-3rd-Year Data Science Student
+Habtamu Belay  
+3rd-Year Data Science Student  
 Bahir Dar University
-
 ```
 
----
-
-### Why this will work perfectly on GitHub?
-
-- The folder structure is inside a fenced code block (triple backticks) which **preserves whitespace and line breaks exactly**.
-- Uses classic ASCII folder-tree characters (`├──`, `│`, `└──`) which render well on GitHub.
-- No comments inside the folder tree to mess formatting.
-- Indentation is consistent with spaces.
-- All sections are markdown formatted cleanly with proper headings, lists, and code blocks.
-
----
-
-
-```
